@@ -1,0 +1,163 @@
+@import '../../theme/variables';
+@import '../../theme/animations';
+
+.ui-select {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+
+  &--full-width {
+    width: 100%;
+  }
+
+  &__label {
+    display: block;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: $text-primary;
+    margin-bottom: $spacing-1;
+  }
+
+  &__required {
+    color: $error-500;
+    margin-left: $spacing-1;
+  }
+
+  &__wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 2px solid $border-default;
+    border-radius: $radius-lg;
+    background-color: $bg-primary;
+    cursor: pointer;
+    transition: all $transition-base;
+
+    &--small {
+      min-height: 32px;
+      padding: $spacing-1 $spacing-2;
+      font-size: $font-size-sm;
+    }
+
+    &--medium {
+      min-height: 40px;
+      padding: $spacing-2 $spacing-3;
+      font-size: $font-size-base;
+    }
+
+    &--large {
+      min-height: 48px;
+      padding: $spacing-2 $spacing-4;
+      font-size: $font-size-lg;
+    }
+
+    &--disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    &--error {
+      border-color: $error-500;
+    }
+
+    &--open {
+      border-color: $primary-500;
+      box-shadow: 0 0 0 3px rgba($primary-500, 0.1);
+    }
+
+    &:hover:not(&--disabled):not(&--open) {
+      border-color: $primary-400;
+    }
+  }
+
+  &__display {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  &__value {
+    color: $text-primary;
+  }
+
+  &__placeholder {
+    color: $text-disabled;
+  }
+
+  &__icon {
+    color: $text-secondary;
+    transition: transform $transition-base;
+    flex-shrink: 0;
+    margin-left: $spacing-2;
+
+    &--open {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__dropdown {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    background-color: $bg-primary;
+    border: 1px solid $border-default;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-lg;
+    z-index: $z-dropdown;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: $spacing-1;
+  }
+
+  &__option {
+    padding: $spacing-3 $spacing-4;
+    cursor: pointer;
+    transition: background-color $transition-fast;
+    color: $text-primary;
+    font-size: $font-size-base;
+
+    &:hover:not(&--disabled) {
+      background-color: $gray-100;
+    }
+
+    &--selected {
+      background-color: $primary-50;
+      color: $primary-700;
+      font-weight: $font-weight-medium;
+    }
+
+    &--disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+  }
+
+  &__helper {
+    font-size: $font-size-xs;
+    color: $text-secondary;
+    margin-top: $spacing-1;
+    min-height: 16px;
+
+    &--error {
+      color: $error-500;
+    }
+  }
+
+  // Animated variant
+  &--animated {
+    animation: fadeIn 0.4s ease-out;
+
+    .ui-select__wrapper--animated {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+      &--open {
+        animation: pulse 1.5s ease-in-out infinite;
+      }
+    }
+  }
+}
+

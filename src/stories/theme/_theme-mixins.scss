@@ -1,0 +1,53 @@
+@import './variables';
+
+// Theme Mixins for Light and Dark Mode
+@mixin light-theme {
+  --bg-primary: #{$bg-primary};
+  --bg-secondary: #{$gray-50};
+  --bg-elevated: #{$bg-primary};
+  
+  --text-primary: #{$gray-900};
+  --text-secondary: #{$gray-600};
+  --text-disabled: #{$gray-400};
+  --text-inverse: #{$text-inverse};
+  
+  --border-light: #{$gray-200};
+  --border-default: #{$gray-300};
+  --border-dark: #{$gray-400};
+  
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+@mixin dark-theme {
+  --bg-primary: #{$gray-900};
+  --bg-secondary: #{$gray-800};
+  --bg-elevated: #{$gray-800};
+  
+  --text-primary: #{$gray-50};
+  --text-secondary: #{$gray-300};
+  --text-disabled: #{$gray-500};
+  --text-inverse: #{$gray-900};
+  
+  --border-light: #{$gray-700};
+  --border-default: #{$gray-600};
+  --border-dark: #{$gray-500};
+  
+  --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+// Apply theme based on data-theme attribute
+[data-theme='light'] {
+  @include light-theme;
+}
+
+[data-theme='dark'] {
+  @include dark-theme;
+}
+
+// Component theme mixin
+@mixin component-theme {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  border-color: var(--border-default);
+}
+

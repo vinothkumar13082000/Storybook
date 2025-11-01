@@ -1,0 +1,147 @@
+@import '../../theme/variables';
+@import '../../theme/theme-mixins';
+
+.ui-message {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-3;
+  padding: $spacing-4 $spacing-5;
+  border-radius: $radius-lg;
+  font-family: $font-family-sans;
+  box-shadow: $shadow-md;
+  background-color: var(--bg-elevated);
+  border-left: 4px solid;
+  transition: all $transition-base;
+  min-width: 300px;
+  max-width: 500px;
+
+  &--hover:hover {
+    box-shadow: $shadow-lg;
+    transform: translateY(-2px);
+  }
+
+  &--success {
+    border-left-color: $success-500;
+    background-color: $success-50;
+
+    [data-theme='dark'] & {
+      background-color: rgba($success-500, 0.1);
+    }
+
+    .ui-message__icon {
+      color: $success-600;
+    }
+  }
+
+  &--error {
+    border-left-color: $error-500;
+    background-color: $error-50;
+
+    [data-theme='dark'] & {
+      background-color: rgba($error-500, 0.1);
+    }
+
+    .ui-message__icon {
+      color: $error-600;
+    }
+  }
+
+  &--warning {
+    border-left-color: $warning-500;
+    background-color: $warning-50;
+
+    [data-theme='dark'] & {
+      background-color: rgba($warning-500, 0.1);
+    }
+
+    .ui-message__icon {
+      color: $warning-600;
+    }
+  }
+
+  &--info {
+    border-left-color: $info-500;
+    background-color: $info-50;
+
+    [data-theme='dark'] & {
+      background-color: rgba($info-500, 0.1);
+    }
+
+    .ui-message__icon {
+      color: $info-600;
+    }
+  }
+
+  &--loading {
+    border-left-color: $primary-500;
+    background-color: $primary-50;
+
+    [data-theme='dark'] & {
+      background-color: rgba($primary-500, 0.1);
+    }
+
+    .ui-message__icon {
+      color: $primary-600;
+      animation: spin 1s linear infinite;
+    }
+  }
+
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: $font-size-xl;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  &__content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__title {
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    color: var(--text-primary);
+    margin-bottom: $spacing-1;
+    line-height: 1.5;
+  }
+
+  &__text {
+    font-size: $font-size-sm;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  &__close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: $spacing-1;
+    color: var(--text-secondary);
+    opacity: 0.7;
+    transition: opacity $transition-fast;
+    flex-shrink: 0;
+    font-size: $font-size-base;
+
+    &:hover {
+      opacity: 1;
+      color: var(--text-primary);
+    }
+
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+

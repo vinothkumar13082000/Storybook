@@ -1,21 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Navbar.scss";
 import { useNavigate } from "react-router-dom";
+import { FaBars, FaTimes, FaMoon, FaSun } from "react-icons/fa";
+import { useTheme } from "../../theme/ThemeProvider";
 
-interface OptionData {
+export interface NavbarOption {
   name: string;
   route: string;
+  icon?: React.ReactNode;
 }
 
-type props = {
-  /**Here we are having two variants */
-  variant?: "Light" | "Dark";
-  options?: OptionData[];
+export interface NavbarProps {
+  /** Navigation options */
+  options?: NavbarOption[];
+  /** Logo image URL */
   image?: string;
+  /** Header title */
   headerTitle?: string;
-};
+  /** Show mobile menu */
+  showMobileMenu?: boolean;
+  /** Custom className */
+  className?: string;
+}
 
-const defaultOptions: OptionData[] = [
+const defaultOptions: NavbarOption[] = [
   {
     name: "Home",
     route: "/home",
@@ -25,46 +33,74 @@ const defaultOptions: OptionData[] = [
     route: "/about",
   },
   {
-    name: "Login",
-    route: "/login",
+    name: "Services",
+    route: "/services",
   },
   {
-    name: "SignUp",
-    route: "/signup",
+    name: "Contact",
+    route: "/contact",
   },
 ];
 
-const Navbar = ({
-  variant = "Dark",
+const Navbar: React.FC<NavbarProps> = ({
   options = defaultOptions,
   image = "https://cdn.pixabay.com/photo/2022/09/04/19/19/trolley-7432508_960_720.png",
   headerTitle = "My Website",
-}: props) => {
+  showMobileMenu = true,
+  className = "",
+}) => {
   const navigate = useNavigate();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { mode, toggleTheme } = useTheme();
+
+  const handleNavClick = (route: string) => {
+    navigate(route);
+    setMobileMenuOpen(false);
+  };
+
   return (
-    <div className={`main-nav-container ${variant}`}>
-      <div className="logo">
-        <div>
-          <img src={image} alt="logo" className="image" />
+    <nav className={`ui-navbar ${className}`}>
+      <div className="ui-navbar__container">
+        <div className="ui-navbar__brand">
+          {image && (
+            <img src={image} alt="logo" className="ui-navbar__logo" />
+          )}
+          <span className="ui-navbar__title">{headerTitle}</span>
         </div>
-        <div>{headerTitle}</div>
-      </div>
-      <div className="content">
-        {options.map((value: OptionData, index: number) => {
-          return (
-            <div
-              onClick={() => {
-                console.log("button clicked");
-                navigate(value?.route);
-              }}
+
+        <div className={`ui-navbar__menu ${mobileMenuOpen ? 'ui-navbar__menu--open' : ''}`}>
+          {options.map((option, index) => (
+            <button
               key={index}
+              className="ui-navbar__item"
+              onClick={() => handleNavClick(option.route)}
             >
-              {value?.name}
-            </div>
-          );
-        })}
+              {option.icon && <span className="ui-navbar__item-icon">{option.icon}</span>}
+              <span>{option.name}</span>
+            </button>
+          ))}
+        </div>
+
+        <div className="ui-navbar__actions">
+          <button
+            className="ui-navbar__theme-toggle"
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
+          >
+            {mode === 'dark' ? <FaSun /> : <FaMoon />}
+          </button>
+          {showMobileMenu && (
+            <button
+              className="ui-navbar__mobile-toggle"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? <FaTimes /> : <FaBars />}
+            </button>
+          )}
+        </div>
       </div>
-    </div>
+    </nav>
   );
 };
 

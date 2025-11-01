@@ -1,0 +1,95 @@
+@import '../../theme/variables';
+@import '../../theme/theme-mixins';
+
+.ui-divider {
+  border: none;
+  background: none;
+  flex-shrink: 0;
+
+  // Horizontal
+  &--horizontal {
+    width: 100%;
+    height: 1px;
+    border-top: var(--divider-width, 1px) var(--divider-style, solid) var(--divider-color, var(--border-default));
+    margin: $spacing-4 0;
+    position: relative;
+
+    &.ui-divider--dashed {
+      border-top-style: dashed;
+    }
+
+    &.ui-divider--dotted {
+      border-top-style: dotted;
+    }
+
+    &.ui-divider--with-text {
+      border-top: none;
+      display: flex;
+      align-items: center;
+      text-align: center;
+
+      &::before,
+      &::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        border-top: var(--divider-width, 1px) var(--divider-style, solid) var(--divider-color, var(--border-default));
+      }
+
+      &.ui-divider--dashed {
+        &::before,
+        &::after {
+          border-top-style: dashed;
+        }
+      }
+
+      &.ui-divider--dotted {
+        &::before,
+        &::after {
+          border-top-style: dotted;
+        }
+      }
+    }
+  }
+
+  // Vertical
+  &--vertical {
+    width: 1px;
+    height: 100%;
+    min-height: 1em;
+    border-left: var(--divider-width, 1px) var(--divider-style, solid) var(--divider-color, var(--border-default));
+    margin: 0 $spacing-2;
+    display: inline-block;
+    vertical-align: middle;
+
+    &.ui-divider--dashed {
+      border-left-style: dashed;
+    }
+
+    &.ui-divider--dotted {
+      border-left-style: dotted;
+    }
+  }
+
+  &__text {
+    padding: 0 $spacing-4;
+    font-size: $font-size-sm;
+    color: var(--text-secondary);
+    font-family: $font-family-sans;
+    background-color: var(--bg-primary);
+    white-space: nowrap;
+
+    &--left {
+      &::before {
+        display: none;
+      }
+    }
+
+    &--right {
+      &::after {
+        display: none;
+      }
+    }
+  }
+}
+

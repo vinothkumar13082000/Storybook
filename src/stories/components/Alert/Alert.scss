@@ -1,0 +1,195 @@
+@import '../../theme/variables';
+@import '../../theme/theme-mixins';
+@import '../../theme/animations';
+
+.ui-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-3;
+  padding: $spacing-4;
+  border-radius: $radius-lg;
+  font-family: $font-family-sans;
+  position: relative;
+  transition: all $transition-base;
+
+  &--hover:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-lg;
+  }
+
+  // Variants
+  &--filled {
+    &.ui-alert--success {
+      background-color: $success-50;
+      color: $success-900;
+      border: var(--alert-border-width, 1px) var(--alert-border-style, solid) var(--alert-border-color, $success-200);
+
+      .ui-alert__icon {
+        color: $success-600;
+      }
+    }
+
+    &.ui-alert--error {
+      background-color: $error-50;
+      color: $error-900;
+      border: var(--alert-border-width, 1px) var(--alert-border-style, solid) var(--alert-border-color, $error-200);
+
+      .ui-alert__icon {
+        color: $error-600;
+      }
+    }
+
+    &.ui-alert--warning {
+      background-color: $warning-50;
+      color: $warning-900;
+      border: var(--alert-border-width, 1px) var(--alert-border-style, solid) var(--alert-border-color, $warning-200);
+
+      .ui-alert__icon {
+        color: $warning-600;
+      }
+    }
+
+    &.ui-alert--info {
+      background-color: $info-50;
+      color: $info-900;
+      border: var(--alert-border-width, 1px) var(--alert-border-style, solid) var(--alert-border-color, $info-200);
+
+      .ui-alert__icon {
+        color: $info-600;
+      }
+    }
+  }
+
+  &--outlined {
+    background-color: transparent;
+
+    &.ui-alert--success {
+      color: $success-700;
+      border: var(--alert-border-width, 2px) var(--alert-border-style, solid) var(--alert-border-color, $success-500);
+
+      .ui-alert__icon {
+        color: $success-500;
+      }
+    }
+
+    &.ui-alert--error {
+      color: $error-700;
+      border: var(--alert-border-width, 2px) var(--alert-border-style, solid) var(--alert-border-color, $error-500);
+
+      .ui-alert__icon {
+        color: $error-500;
+      }
+    }
+
+    &.ui-alert--warning {
+      color: $warning-700;
+      border: var(--alert-border-width, 2px) var(--alert-border-style, solid) var(--alert-border-color, $warning-500);
+
+      .ui-alert__icon {
+        color: $warning-500;
+      }
+    }
+
+    &.ui-alert--info {
+      color: $info-700;
+      border: var(--alert-border-width, 2px) var(--alert-border-style, solid) var(--alert-border-color, $info-500);
+
+      .ui-alert__icon {
+        color: $info-500;
+      }
+    }
+  }
+
+  &--text {
+    background-color: transparent;
+    border: none;
+
+    &.ui-alert--success {
+      color: $success-700;
+
+      .ui-alert__icon {
+        color: $success-500;
+      }
+    }
+
+    &.ui-alert--error {
+      color: $error-700;
+
+      .ui-alert__icon {
+        color: $error-500;
+      }
+    }
+
+    &.ui-alert--warning {
+      color: $warning-700;
+
+      .ui-alert__icon {
+        color: $warning-500;
+      }
+    }
+
+    &.ui-alert--info {
+      color: $info-700;
+
+      .ui-alert__icon {
+        color: $info-500;
+      }
+    }
+  }
+
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: $font-size-xl;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  &__content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__title {
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    margin-bottom: $spacing-1;
+    line-height: 1.5;
+  }
+
+  &__message {
+    font-size: $font-size-sm;
+    line-height: 1.6;
+  }
+
+  &__close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: $spacing-1;
+    color: currentColor;
+    opacity: 0.7;
+    transition: opacity $transition-fast;
+    flex-shrink: 0;
+    font-size: $font-size-base;
+
+    &:hover {
+      opacity: 1;
+    }
+
+  }
+
+  // Animated variant
+  &--animated {
+    animation: slideInDown 0.5s ease-out;
+
+    &:hover {
+      animation: pulse 2s ease-in-out infinite;
+    }
+  }
+}
+

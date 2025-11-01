@@ -1,0 +1,203 @@
+@import '../../theme/variables';
+@import '../../theme/animations';
+
+.ui-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-2;
+  font-family: $font-family-sans;
+  font-weight: $font-weight-medium;
+  border-radius: $radius-full;
+  white-space: nowrap;
+  transition: all $transition-base;
+
+  // Sizes
+  &--small {
+    padding: $spacing-1 $spacing-2;
+    font-size: $font-size-xs;
+
+    .ui-chip__avatar {
+      width: 16px;
+      height: 16px;
+    }
+
+    .ui-chip__icon {
+      font-size: $font-size-xs;
+    }
+  }
+
+  &--medium {
+    padding: $spacing-2 $spacing-3;
+    font-size: $font-size-sm;
+
+    .ui-chip__avatar {
+      width: 20px;
+      height: 20px;
+    }
+
+    .ui-chip__icon {
+      font-size: $font-size-sm;
+    }
+  }
+
+  &--large {
+    padding: $spacing-2 $spacing-4;
+    font-size: $font-size-base;
+
+    .ui-chip__avatar {
+      width: 24px;
+      height: 24px;
+    }
+
+    .ui-chip__icon {
+      font-size: $font-size-base;
+    }
+  }
+
+  // Variants
+  &--filled {
+    // Colors for filled variant
+    &.ui-chip--default {
+      background-color: $gray-200;
+      color: $text-primary;
+    }
+
+    &.ui-chip--primary {
+      background-color: $primary-500;
+      color: white;
+    }
+
+    &.ui-chip--secondary {
+      background-color: $secondary-500;
+      color: white;
+    }
+
+    &.ui-chip--success {
+      background-color: $success-500;
+      color: white;
+    }
+
+    &.ui-chip--error {
+      background-color: $error-500;
+      color: white;
+    }
+
+    &.ui-chip--warning {
+      background-color: $warning-500;
+      color: white;
+    }
+
+    &.ui-chip--info {
+      background-color: $info-500;
+      color: white;
+    }
+  }
+
+  &--outlined {
+    border: 2px solid;
+    background-color: transparent;
+
+    &.ui-chip--default {
+      border-color: $border-default;
+      color: $text-primary;
+    }
+
+    &.ui-chip--primary {
+      border-color: $primary-500;
+      color: $primary-500;
+    }
+
+    &.ui-chip--secondary {
+      border-color: $secondary-500;
+      color: $secondary-500;
+    }
+
+    &.ui-chip--success {
+      border-color: $success-500;
+      color: $success-500;
+    }
+
+    &.ui-chip--error {
+      border-color: $error-500;
+      color: $error-500;
+    }
+
+    &.ui-chip--warning {
+      border-color: $warning-500;
+      color: $warning-500;
+    }
+
+    &.ui-chip--info {
+      border-color: $info-500;
+      color: $info-500;
+    }
+  }
+
+  &--clickable {
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.8;
+      transform: translateY(-1px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  &__avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  &__label {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  &__delete {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-left: -$spacing-1;
+    opacity: 0.7;
+    transition: opacity $transition-fast;
+    flex-shrink: 0;
+
+    &:hover {
+      opacity: 1;
+    }
+
+  }
+
+  // Animated variant
+  &--animated {
+    animation: scaleIn 0.4s ease-out;
+
+    &:hover {
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+  }
+}
+

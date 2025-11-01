@@ -1,0 +1,231 @@
+@import '../../theme/variables';
+
+.ui-slider {
+  width: 100%;
+  padding: $spacing-2 0;
+
+  &--disabled {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  &--small {
+    .ui-slider__input {
+      height: 4px;
+    }
+  }
+
+  &--medium {
+    .ui-slider__input {
+      height: 6px;
+    }
+  }
+
+  &--large {
+    .ui-slider__input {
+      height: 8px;
+    }
+  }
+
+  &__container {
+    position: relative;
+    width: 100%;
+  }
+
+  &__value-label {
+    position: absolute;
+    top: -32px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: $gray-800;
+    color: white;
+    padding: $spacing-1 $spacing-2;
+    border-radius: $radius-md;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    white-space: nowrap;
+    z-index: 1;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-top: 4px solid $gray-800;
+    }
+  }
+
+  &__track-wrapper {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__track {
+    position: absolute;
+    width: 100%;
+    height: 6px;
+    background-color: $gray-300;
+    border-radius: $radius-full;
+  }
+
+  &__fill {
+    position: absolute;
+    height: 6px;
+    border-radius: $radius-full;
+    transition: width $transition-base;
+
+    &--primary {
+      background-color: $primary-500;
+    }
+
+    &--secondary {
+      background-color: $secondary-500;
+    }
+
+    &--success {
+      background-color: $success-500;
+    }
+
+    &--error {
+      background-color: $error-500;
+    }
+
+    &--warning {
+      background-color: $warning-500;
+    }
+  }
+
+  &__marks {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  &__mark {
+    position: absolute;
+    transform: translateX(-50%);
+    top: 50%;
+  }
+
+  &__mark-label {
+    position: absolute;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: $font-size-xs;
+    color: $text-secondary;
+    white-space: nowrap;
+  }
+
+  &__input {
+    position: relative;
+    width: 100%;
+    height: 6px;
+    background: $gray-300;
+    outline: none;
+    border-radius: $radius-full;
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    z-index: 1;
+
+    &::-webkit-slider-thumb {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: $primary-500;
+      cursor: pointer;
+      border: 2px solid white;
+      box-shadow: $shadow-md;
+      transition: all $transition-base;
+    }
+
+    &::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: $primary-500;
+      cursor: pointer;
+      border: 2px solid white;
+      box-shadow: $shadow-md;
+      transition: all $transition-base;
+    }
+
+    &--primary {
+      &::-webkit-slider-thumb {
+        background: $primary-500;
+      }
+
+      &::-moz-range-thumb {
+        background: $primary-500;
+      }
+    }
+
+    &--secondary {
+      &::-webkit-slider-thumb {
+        background: $secondary-500;
+      }
+
+      &::-moz-range-thumb {
+        background: $secondary-500;
+      }
+    }
+
+    &--success {
+      &::-webkit-slider-thumb {
+        background: $success-500;
+      }
+
+      &::-moz-range-thumb {
+        background: $success-500;
+      }
+    }
+
+    &--error {
+      &::-webkit-slider-thumb {
+        background: $error-500;
+      }
+
+      &::-moz-range-thumb {
+        background: $error-500;
+      }
+    }
+
+    &--warning {
+      &::-webkit-slider-thumb {
+        background: $warning-500;
+      }
+
+      &::-moz-range-thumb {
+        background: $warning-500;
+      }
+    }
+
+    &:hover:not(:disabled) {
+      &::-webkit-slider-thumb {
+        transform: scale(1.1);
+      }
+
+      &::-moz-range-thumb {
+        transform: scale(1.1);
+      }
+    }
+
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+}
+

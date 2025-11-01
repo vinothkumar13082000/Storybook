@@ -1,0 +1,157 @@
+@import '../../theme/variables';
+@import '../../theme/animations';
+
+.ui-radio {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-2;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+
+  &--disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  &--small {
+    font-size: $font-size-sm;
+
+    .ui-radio__circle {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &--medium {
+    font-size: $font-size-base;
+
+    .ui-radio__circle {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &--large {
+    font-size: $font-size-lg;
+
+    .ui-radio__circle {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &__input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+
+    &:checked ~ .ui-radio__circle {
+      border-color: $primary-500;
+
+      &::after {
+        display: block;
+      }
+    }
+
+    &:disabled ~ .ui-radio__circle {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+  }
+
+  &__circle {
+    position: relative;
+    display: inline-block;
+    border: 2px solid $border-default;
+    border-radius: 50%;
+    background-color: $bg-primary;
+    transition: all $transition-base;
+    flex-shrink: 0;
+
+    &::after {
+      content: '';
+      position: absolute;
+      display: none;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: $primary-500;
+    }
+
+    &--primary {
+      .ui-radio__input:checked ~ & {
+        border-color: $primary-500;
+
+        &::after {
+          background-color: $primary-500;
+        }
+      }
+    }
+
+    &--secondary {
+      .ui-radio__input:checked ~ & {
+        border-color: $secondary-500;
+
+        &::after {
+          background-color: $secondary-500;
+        }
+      }
+    }
+
+    &--success {
+      .ui-radio__input:checked ~ & {
+        border-color: $success-500;
+
+        &::after {
+          background-color: $success-500;
+        }
+      }
+    }
+
+    &--error {
+      .ui-radio__input:checked ~ & {
+        border-color: $error-500;
+
+        &::after {
+          background-color: $error-500;
+        }
+      }
+    }
+
+    &--warning {
+      .ui-radio__input:checked ~ & {
+        border-color: $warning-500;
+
+        &::after {
+          background-color: $warning-500;
+        }
+      }
+    }
+  }
+
+  &__label {
+    color: $text-primary;
+    font-weight: $font-weight-normal;
+  }
+
+  // Animated variant
+  &--animated {
+    animation: fadeIn 0.3s ease-out;
+
+    .ui-radio__circle {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+      &:hover {
+        animation: pulse 0.6s ease-in-out;
+      }
+    }
+  }
+}
+

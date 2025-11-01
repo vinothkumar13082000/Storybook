@@ -1,0 +1,115 @@
+@import '../../theme/variables';
+
+.ui-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-family: $font-family-sans;
+  font-weight: $font-weight-medium;
+  color: white;
+  background-color: $gray-400;
+  position: relative;
+  overflow: hidden;
+
+  // Variants
+  &--circular {
+    border-radius: 50%;
+  }
+
+  &--rounded {
+    border-radius: $radius-lg;
+  }
+
+  &--square {
+    border-radius: 0;
+  }
+
+  // Sizes
+  &--small {
+    width: 32px;
+    height: 32px;
+    font-size: $font-size-xs;
+  }
+
+  &--medium {
+    width: 40px;
+    height: 40px;
+    font-size: $font-size-sm;
+  }
+
+  &--large {
+    width: 56px;
+    height: 56px;
+    font-size: $font-size-base;
+  }
+
+  &--xlarge {
+    width: 96px;
+    height: 96px;
+    font-size: $font-size-2xl;
+  }
+
+  // Colors
+  &--default {
+    background-color: $gray-400;
+  }
+
+  &--primary {
+    background-color: $primary-500;
+  }
+
+  &--secondary {
+    background-color: $secondary-500;
+  }
+
+  &--success {
+    background-color: $success-500;
+  }
+
+  &--error {
+    background-color: $error-500;
+  }
+
+  &--warning {
+    background-color: $warning-500;
+  }
+
+  &--info {
+    background-color: $info-500;
+  }
+
+  &--clickable {
+    cursor: pointer;
+    transition: transform $transition-base;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__initials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    user-select: none;
+  }
+}
+

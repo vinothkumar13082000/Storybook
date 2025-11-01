@@ -1,0 +1,159 @@
+@import '../../theme/variables';
+@import '../../theme/animations';
+
+.ui-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-2;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+
+  &--disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  &--left {
+    flex-direction: row-reverse;
+  }
+
+  &--right {
+    flex-direction: row;
+  }
+
+  &--small {
+    font-size: $font-size-sm;
+
+    .ui-switch__slider {
+      width: 32px;
+      height: 18px;
+
+      &::before {
+        width: 14px;
+        height: 14px;
+      }
+    }
+  }
+
+  &--medium {
+    font-size: $font-size-base;
+
+    .ui-switch__slider {
+      width: 44px;
+      height: 24px;
+
+      &::before {
+        width: 18px;
+        height: 18px;
+      }
+    }
+  }
+
+  &--large {
+    font-size: $font-size-lg;
+
+    .ui-switch__slider {
+      width: 56px;
+      height: 30px;
+
+      &::before {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+
+  &__input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+
+    &:checked ~ .ui-switch__slider {
+      background-color: $primary-500;
+
+      &::before {
+        transform: translateX(20px);
+      }
+    }
+
+    &:disabled ~ .ui-switch__slider {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+  }
+
+  &__slider {
+    position: relative;
+    display: inline-block;
+    background-color: $gray-300;
+    transition: all $transition-base;
+    border-radius: $radius-full;
+    flex-shrink: 0;
+
+    &::before {
+      content: '';
+      position: absolute;
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: all $transition-base;
+      border-radius: 50%;
+      box-shadow: $shadow-sm;
+    }
+
+    &--primary {
+      .ui-switch__input:checked ~ & {
+        background-color: $primary-500;
+      }
+    }
+
+    &--secondary {
+      .ui-switch__input:checked ~ & {
+        background-color: $secondary-500;
+      }
+    }
+
+    &--success {
+      .ui-switch__input:checked ~ & {
+        background-color: $success-500;
+      }
+    }
+
+    &--error {
+      .ui-switch__input:checked ~ & {
+        background-color: $error-500;
+      }
+    }
+
+    &--warning {
+      .ui-switch__input:checked ~ & {
+        background-color: $warning-500;
+      }
+    }
+  }
+
+  &__label {
+    color: $text-primary;
+    font-weight: $font-weight-normal;
+  }
+
+  // Animated variant
+  &--animated {
+    animation: fadeIn 0.3s ease-out;
+
+    .ui-switch__slider {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+      &:hover {
+        animation: pulse 0.6s ease-in-out;
+      }
+    }
+  }
+}
+

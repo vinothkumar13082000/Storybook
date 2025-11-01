@@ -1,0 +1,103 @@
+@import '../../theme/variables';
+@import '../../theme/theme-mixins';
+
+.ui-link {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-1;
+  text-decoration: none;
+  font-family: $font-family-sans;
+  transition: all $transition-fast;
+  cursor: pointer;
+
+  &--underline-none {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  &--underline-hover {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &--underline-always {
+    text-decoration: underline;
+  }
+
+  // Variants
+  &--default {
+    color: var(--text-primary);
+
+    &:hover:not(&--disabled) {
+      color: $primary-600;
+    }
+  }
+
+  &--primary {
+    color: $primary-600;
+
+    &:hover:not(&--disabled) {
+      color: $primary-700;
+    }
+  }
+
+  &--secondary {
+    color: $secondary-600;
+
+    &:hover:not(&--disabled) {
+      color: $secondary-700;
+    }
+  }
+
+  &--success {
+    color: $success-600;
+
+    &:hover:not(&--disabled) {
+      color: $success-700;
+    }
+  }
+
+  &--error {
+    color: $error-600;
+
+    &:hover:not(&--disabled) {
+      color: $error-700;
+    }
+  }
+
+  &--warning {
+    color: $warning-600;
+
+    &:hover:not(&--disabled) {
+      color: $warning-700;
+    }
+  }
+
+  &--disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  &--no-hover:hover {
+    transform: none !important;
+  }
+
+  &__text {
+    display: inline-block;
+  }
+
+  &__start-icon,
+  &__end-icon {
+    display: inline-flex;
+    align-items: center;
+    font-size: inherit;
+  }
+}
+

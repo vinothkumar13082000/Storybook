@@ -1,0 +1,164 @@
+@import '../../theme/variables';
+
+.ui-progress {
+  width: 100%;
+
+  // Sizes
+  &--small {
+    .ui-progress__track {
+      height: 4px;
+    }
+
+    .ui-progress__circle-svg {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  &--medium {
+    .ui-progress__track {
+      height: 6px;
+    }
+
+    .ui-progress__circle-svg {
+      width: 60px;
+      height: 60px;
+    }
+  }
+
+  &--large {
+    .ui-progress__track {
+      height: 8px;
+    }
+
+    .ui-progress__circle-svg {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  // Linear variant
+  &--linear {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-2;
+  }
+
+  &__label {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: $text-primary;
+  }
+
+  &__track {
+    width: 100%;
+    background-color: $gray-200;
+    border-radius: $radius-full;
+    overflow: hidden;
+    position: relative;
+  }
+
+  &__fill {
+    height: 100%;
+    border-radius: $radius-full;
+    transition: width 0.3s ease;
+
+    &--primary {
+      background-color: $primary-500;
+    }
+
+    &--secondary {
+      background-color: $secondary-500;
+    }
+
+    &--success {
+      background-color: $success-500;
+    }
+
+    &--error {
+      background-color: $error-500;
+    }
+
+    &--warning {
+      background-color: $warning-500;
+    }
+
+    &--info {
+      background-color: $info-500;
+    }
+
+    &--indeterminate {
+      width: 30% !important;
+      animation: progress-indeterminate 1.5s ease-in-out infinite;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        var(--progress-color, $primary-500),
+        transparent
+      );
+    }
+  }
+
+  // Circular variant
+  &--circular {
+    position: relative;
+    display: inline-block;
+  }
+
+  &__circle-svg {
+    transform: rotate(-90deg);
+  }
+
+  &__circle-background {
+    stroke: $gray-200;
+  }
+
+  &__circle-fill {
+    transition: stroke-dashoffset 0.3s ease;
+    stroke-linecap: round;
+
+    &--primary {
+      stroke: $primary-500;
+    }
+
+    &--secondary {
+      stroke: $secondary-500;
+    }
+
+    &--success {
+      stroke: $success-500;
+    }
+
+    &--error {
+      stroke: $error-500;
+    }
+
+    &--warning {
+      stroke: $warning-500;
+    }
+
+    &--info {
+      stroke: $info-500;
+    }
+  }
+
+  &__circle-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: $text-primary;
+  }
+}
+
+@keyframes progress-indeterminate {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(400%);
+  }
+}
+

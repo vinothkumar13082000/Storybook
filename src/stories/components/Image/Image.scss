@@ -1,0 +1,47 @@
+@import '../../theme/variables';
+@import '../../theme/theme-mixins';
+
+.ui-image-wrapper {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  border: var(--image-border-width, 0) var(--image-border-style, solid) var(--image-border-color, transparent);
+  transition: all $transition-base;
+
+  &--hover:hover {
+    transform: scale(1.05);
+    box-shadow: $shadow-lg;
+  }
+}
+
+.ui-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: opacity $transition-base;
+  opacity: 0;
+
+  &--loaded {
+    opacity: 1;
+  }
+}
+
+.ui-image__placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.3;
+  }
+}
+

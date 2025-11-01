@@ -1,0 +1,114 @@
+@import '../../theme/variables';
+@import '../../theme/animations';
+
+.ui-accordion {
+  width: 100%;
+  border: 1px solid $border-default;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  background-color: $bg-primary;
+}
+
+.ui-accordion-item {
+  border-bottom: 1px solid $border-light;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &--expanded {
+    .ui-accordion-item__content {
+      display: block;
+    }
+  }
+
+  &--disabled {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  &__header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $spacing-4 $spacing-6;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: background-color $transition-fast;
+    font-family: $font-family-sans;
+    outline: none;
+
+    &:hover:not(:disabled) {
+      background-color: $gray-50;
+    }
+
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+
+  &__title {
+    font-size: $font-size-base;
+    font-weight: $font-weight-medium;
+    color: $text-primary;
+    flex: 1;
+  }
+
+  &__icon {
+    color: $text-secondary;
+    transition: transform $transition-base;
+    flex-shrink: 0;
+    margin-left: $spacing-2;
+
+    &--expanded {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__content {
+    display: none;
+    padding: $spacing-4 $spacing-6;
+    padding-top: 0;
+    color: $text-secondary;
+    line-height: 1.6;
+    animation: accordion-fade-in $transition-base;
+  }
+}
+
+@keyframes accordion-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Animated variant
+.ui-accordion--animated {
+  animation: fadeIn 0.4s ease-out;
+
+  .ui-accordion-item {
+    animation: fadeInUp 0.3s ease-out;
+    animation-fill-mode: both;
+
+    @for $i from 1 through 10 {
+      &:nth-child(#{$i}) {
+        animation-delay: #{$i * 0.1}s;
+      }
+    }
+
+    &--expanded {
+      .ui-accordion-item__content {
+        animation: slideInDown 0.3s ease-out;
+      }
+    }
+  }
+}
+

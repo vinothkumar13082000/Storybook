@@ -1,0 +1,108 @@
+@import '../../theme/variables';
+@import '../../theme/theme-mixins';
+
+.ui-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: $font-family-sans;
+  background-color: var(--bg-primary);
+
+  &--padding-none {
+    padding: 0;
+  }
+
+  &--padding-small {
+    padding: $spacing-2 0;
+  }
+
+  &--padding-medium {
+    padding: $spacing-4 0;
+  }
+
+  &--padding-large {
+    padding: $spacing-6 0;
+  }
+
+  &--outlined {
+    border: 1px var(--list-border-style, solid) var(--list-border-color, var(--border-default));
+    border-radius: $radius-lg;
+    overflow: hidden;
+  }
+
+  &--contained {
+    background-color: var(--bg-secondary);
+    border-radius: $radius-lg;
+    padding: $spacing-2;
+  }
+}
+
+.ui-list-item {
+  display: flex;
+  align-items: center;
+  gap: $spacing-3;
+  padding: $spacing-3 $spacing-4;
+  transition: all $transition-base;
+  border-bottom: 1px var(--list-item-border-style, solid) var(--list-item-border-color, var(--border-light));
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &--clickable {
+    cursor: pointer;
+
+    &:hover:not(&--disabled):not(&--no-hover) {
+      background-color: var(--bg-secondary);
+    }
+
+    &:active:not(&--disabled) {
+      background-color: var(--bg-elevated);
+    }
+  }
+
+  &--disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  &--no-hover:hover {
+    background-color: transparent !important;
+  }
+
+  &__start-icon,
+  &__end-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--text-secondary);
+    font-size: $font-size-lg;
+  }
+
+  &__content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__primary {
+    font-size: $font-size-base;
+    font-weight: $font-weight-medium;
+    color: var(--text-primary);
+    line-height: 1.5;
+  }
+
+  &__secondary {
+    font-size: $font-size-sm;
+    color: var(--text-secondary);
+    margin-top: $spacing-1;
+    line-height: 1.4;
+  }
+
+  &__action {
+    flex-shrink: 0;
+    margin-left: auto;
+  }
+}
+

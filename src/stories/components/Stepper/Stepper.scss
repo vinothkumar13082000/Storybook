@@ -1,0 +1,203 @@
+@import '../../theme/variables';
+@import '../../theme/theme-mixins';
+
+.ui-stepper {
+  display: flex;
+  font-family: $font-family-sans;
+
+  &--horizontal {
+    flex-direction: row;
+    width: 100%;
+
+    .ui-stepper__step {
+      flex: 1;
+      position: relative;
+    }
+
+    .ui-stepper__step-connector {
+      position: absolute;
+      top: 20px;
+      left: calc(50% + 20px);
+      right: calc(-50% + 20px);
+      height: 2px;
+      background-color: var(--stepper-border-color, var(--border-default));
+      border-top: var(--stepper-border-width, 2px) var(--stepper-border-style, solid) transparent;
+    }
+  }
+
+  &--vertical {
+    flex-direction: column;
+    align-items: flex-start;
+
+    .ui-stepper__step {
+      display: flex;
+      align-items: flex-start;
+      gap: $spacing-4;
+      width: 100%;
+      position: relative;
+      padding-bottom: $spacing-6;
+
+      &:last-child {
+        padding-bottom: 0;
+      }
+    }
+
+    .ui-stepper__step-content {
+      flex: 1;
+      margin-top: 0;
+      text-align: left;
+      padding-top: $spacing-1;
+    }
+
+    .ui-stepper__step-connector {
+      position: absolute;
+      left: 20px;
+      top: 48px;
+      bottom: 0;
+      width: 2px;
+      background-color: var(--stepper-border-color, var(--border-default));
+      border-left: none;
+      
+      .ui-stepper__step--completed & {
+        background-color: $success-500;
+      }
+    }
+
+    .ui-stepper__step:last-child .ui-stepper__step-connector {
+      display: none;
+    }
+  }
+
+  &--outlined {
+    .ui-stepper__step-indicator {
+      border: 2px solid var(--border-default);
+      background-color: transparent;
+    }
+  }
+
+  &__step {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+
+    .ui-stepper--vertical & {
+      flex-direction: row;
+      align-items: flex-start;
+      flex: none;
+    }
+
+    &--active {
+      .ui-stepper__step-indicator {
+        background-color: $primary-500;
+        border-color: $primary-500;
+        color: white;
+      }
+
+      .ui-stepper__step-title {
+        color: $primary-700;
+        font-weight: $font-weight-semibold;
+      }
+    }
+
+    &--completed {
+      .ui-stepper__step-indicator {
+        background-color: $success-500;
+        border-color: $success-500;
+        color: white;
+      }
+
+      .ui-stepper__step-connector {
+        background-color: $success-500;
+        border-color: $success-500;
+      }
+
+      .ui-stepper__step-title {
+        color: var(--text-primary);
+      }
+    }
+
+    &--error {
+      .ui-stepper__step-indicator {
+        background-color: $error-500;
+        border-color: $error-500;
+        color: white;
+      }
+
+      .ui-stepper__step-title {
+        color: $error-700;
+      }
+    }
+
+    &--disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+  }
+
+  &__step-indicator {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-secondary);
+    border: 2px solid var(--border-default);
+    color: var(--text-secondary);
+    font-weight: $font-weight-semibold;
+    flex-shrink: 0;
+    transition: all $transition-base;
+    position: relative;
+    z-index: 1;
+
+    .ui-stepper--vertical & {
+      margin-top: 0;
+    }
+  }
+
+  &__step-number {
+    font-size: $font-size-base;
+  }
+
+  &__check-icon {
+    font-size: $font-size-sm;
+  }
+
+  &__custom-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: $font-size-lg;
+  }
+
+  &__step-content {
+    margin-top: $spacing-2;
+    text-align: center;
+
+    .ui-stepper--vertical & {
+      margin-top: 0;
+      text-align: left;
+    }
+  }
+
+  &__step-title {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  &__step-description {
+    font-size: $font-size-xs;
+    color: var(--text-disabled);
+    margin-top: $spacing-1;
+    line-height: 1.4;
+  }
+
+  &__step-connector {
+    transition: background-color $transition-base;
+  }
+}
+

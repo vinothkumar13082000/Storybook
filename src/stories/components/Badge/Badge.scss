@@ -1,0 +1,97 @@
+@import '../../theme/variables';
+@import '../../theme/animations';
+
+.ui-badge-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.ui-badge {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $font-family-sans;
+  font-weight: $font-weight-bold;
+  border-radius: $radius-full;
+  z-index: 1;
+  white-space: nowrap;
+
+  // Variants
+  &--standard {
+    min-width: 18px;
+    height: 18px;
+    padding: 0 6px;
+    font-size: $font-size-xs;
+    line-height: 1;
+  }
+
+  &--dot {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+  }
+
+  // Colors
+  &--primary {
+    background-color: $primary-500;
+    color: white;
+  }
+
+  &--secondary {
+    background-color: $secondary-500;
+    color: white;
+  }
+
+  &--success {
+    background-color: $success-500;
+    color: white;
+  }
+
+  &--error {
+    background-color: $error-500;
+    color: white;
+  }
+
+  &--warning {
+    background-color: $warning-500;
+    color: white;
+  }
+
+  &--info {
+    background-color: $info-500;
+    color: white;
+  }
+
+  // Positions
+  &--top-right {
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+  }
+
+  &--top-left {
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+  }
+
+  &--bottom-right {
+    bottom: 0;
+    right: 0;
+    transform: translate(50%, 50%);
+  }
+
+  &--bottom-left {
+    bottom: 0;
+    left: 0;
+    transform: translate(-50%, 50%);
+  }
+
+  // Animated variant
+  &--animated {
+    animation: scaleIn 0.4s ease-out, pulse 2s ease-in-out infinite;
+    animation-delay: 0s, 0.5s;
+  }
+}
+

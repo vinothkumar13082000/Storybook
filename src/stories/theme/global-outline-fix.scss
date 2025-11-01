@@ -1,0 +1,16 @@
+// Global fix to remove all browser default focus outlines
+// This file should be imported in the main preview or theme file
+
+button,
+button:focus,
+button:focus-visible,
+[role="button"],
+[role="button"]:focus,
+[role="button"]:focus-visible {
+  outline: none !important;
+}
+
+button:active {
+  outline: none !important;
+}
+

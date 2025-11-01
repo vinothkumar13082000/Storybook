@@ -1,0 +1,79 @@
+@import '../../theme/variables';
+@import '../../theme/theme-mixins';
+
+.ui-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-16 $spacing-8;
+  text-align: center;
+  font-family: $font-family-sans;
+
+  &--hover:hover {
+    .ui-empty__icon {
+      transform: scale(1.1);
+    }
+  }
+
+  &--small {
+    padding: $spacing-8 $spacing-4;
+
+    .ui-empty__icon {
+      font-size: 48px;
+    }
+
+    .ui-empty__description {
+      font-size: $font-size-sm;
+    }
+  }
+
+  &--medium {
+    padding: $spacing-16 $spacing-8;
+
+    .ui-empty__icon {
+      font-size: 64px;
+    }
+
+    .ui-empty__description {
+      font-size: $font-size-base;
+    }
+  }
+
+  &--large {
+    padding: $spacing-16 $spacing-10;
+
+    .ui-empty__icon {
+      font-size: 96px;
+    }
+
+    .ui-empty__description {
+      font-size: $font-size-lg;
+    }
+  }
+
+  &__image {
+    max-width: 200px;
+    height: auto;
+    margin-bottom: $spacing-4;
+    opacity: 0.6;
+  }
+
+  &__icon {
+    color: var(--text-disabled);
+    margin-bottom: $spacing-4;
+    transition: transform $transition-base;
+  }
+
+  &__description {
+    color: var(--text-secondary);
+    font-weight: $font-weight-normal;
+    line-height: 1.5;
+    margin-bottom: $spacing-4;
+  }
+
+  &__footer {
+    margin-top: $spacing-4;
+  }
+}
+
