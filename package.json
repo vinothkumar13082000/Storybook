@@ -38,12 +38,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-username/modenui.git"
+    "url": "https://github.com/vinothkumar13082000/Storybook.git"
   },
   "bugs": {
-    "url": "https://github.com/your-username/modenui/issues"
+    "url": "https://github.com/vinothkumar13082000/Storybook/issues"
   },
-  "homepage": "https://github.com/your-username/modenui#readme",
+  "homepage": "https://github.com/vinothkumar13082000/Storybook#readme",
   "peerDependencies": {
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
@@ -58,6 +58,7 @@
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
+    "deploy-storybook": "npm run build-storybook && gh-pages -d storybook-static",
     "prepublishOnly": "npm run build:lib"
   },
   "dependencies": {
