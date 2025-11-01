@@ -18,6 +18,10 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -33,8 +37,9 @@ jobs:
 
       - name: Build Storybook
         run: npm run build-storybook
-        env:
-          STORYBOOK_BASE_PATH: '/Storybook'
+
+      - name: Add .nojekyll file
+        run: touch storybook-static/.nojekyll
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -50,6 +55,9 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
+    permissions:
+      pages: write
+      id-token: write
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
