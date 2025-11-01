@@ -1,0 +1,34 @@
+.main-nav-container {
+  display: flex;
+  flex-direction: row;
+  padding: 30px;
+  .logo {
+    flex-basis: 60%;
+    display: flex;
+    gap: 40px;
+    justify-content: flex-start;
+    align-items: center;
+    .image {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+  }
+  .content {
+    flex-basis: 40%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    div {
+      cursor: pointer;
+    }
+  }
+}
+.Dark {
+  background-color: black;
+  color: white;
+}
+.Light {
+  background-color: beige;
+  color: black;
+}

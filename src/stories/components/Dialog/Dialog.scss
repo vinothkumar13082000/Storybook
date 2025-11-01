@@ -1,0 +1,49 @@
+.main-storybook-dialog-container{
+  position: absolute;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  .dialog-outline{
+    border: 2px solid grey;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 10px;
+    min-width: 300px;
+    .header{
+        font-size: 20px;
+        font-weight: 600;
+        border-bottom: 2px solid black;
+        padding: 10px 0px;
+    }
+    .content{
+        font-size: 16px;
+        white-space: wrap;
+        padding: 10px;
+        padding: 10px 10px 30px 10px;
+    }
+    .footer{
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        .secondary-btn{
+            padding: 10px;
+            background-color: #fff;
+            color: rgb(252, 172, 23);
+           border-color: rgb(252, 172, 23);
+           border-radius: 5px;
+        }
+        .primary-btn{
+            padding: 10px;
+            background-color:  rgb(252, 172, 23);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            &:hover{
+                background-color:  rgb(204, 139, 18);
+            }
+        }
+    }
+
+  }
+}

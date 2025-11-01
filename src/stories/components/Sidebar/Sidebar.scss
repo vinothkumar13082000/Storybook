@@ -1,0 +1,135 @@
+:root {
+  /* Dark mode variables (default) */
+  --sidebar-bg: #1e1e2d;
+  --sidebar-color: #ffffff;
+  --sidebar-border: #333;
+  --sidebar-hover-bg: #29293d;
+  --sidebar-hover-color: #f4b400;
+  --sidebar-toggle-border: #fff;
+}
+
+.sidebar.light {
+  /* Light mode variables */
+  --sidebar-bg: #f9f9f9;
+  --sidebar-color: #000000;
+  --sidebar-border: #ddd;
+  --sidebar-hover-bg: #e0e0e0;
+  --sidebar-hover-color: #007bff;
+  --sidebar-toggle-border: #000;
+}
+
+.sidebar {
+  background-color: var(--sidebar-bg);
+  color: var(--sidebar-color);
+  width: 250px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+  position: relative;
+  font-family: sans-serif;
+
+  .sidebar__toggle {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    background: none;
+    color: var(--sidebar-color);
+    border: 2px solid var(--sidebar-toggle-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    float: right;
+    position: absolute;
+    background-color: var(--sidebar-bg);
+    right: -12px;
+    top: 15px;
+
+    &:hover {
+      color: var(--sidebar-hover-color);
+    }
+  }
+
+  .sidebar__menu-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+  }
+
+  &.collapsed {
+    width: 80px;
+
+    .sidebar__menu-label,
+    .logo-text {
+      display: none;
+    }
+
+    .sidebar__menu-icon {
+      margin: 0 auto;
+    }
+  }
+
+  &__logo {
+    padding: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    border-bottom: 1px solid var(--sidebar-border);
+  }
+
+  .sidebar__menu-icon {
+    font-size: 25px;
+
+    &:hover {
+      color: var(--sidebar-hover-color);
+    }
+  }
+  .sidebar__menu-label{
+    letter-spacing: 2px;
+  }
+
+  &__menu {
+    flex-grow: 1;
+    overflow-y: auto;
+
+    &-item {
+      display: flex;
+      align-items: center;
+      padding: 15px 20px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+
+      &:hover {
+        background-color: var(--sidebar-hover-bg);
+      }
+
+      &-icon {
+        font-size: 25px;
+
+        &:hover {
+          color: var(--sidebar-hover-color);
+        }
+      }
+
+      &-label {
+        font-size: 16px;
+        letter-spacing: 2px;
+      }
+    }
+  }
+
+  &__footer {
+    padding: 10px 20px;
+    border-top: 1px solid var(--sidebar-border);
+    text-align: center;
+    font-size: 14px;
+  }
+}
