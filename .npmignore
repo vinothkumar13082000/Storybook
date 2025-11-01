@@ -1,0 +1,40 @@
+# Development files
+.storybook/
+storybook-static/
+node_modules/
+.vscode/
+.idea/
+
+# Source files (we only publish dist)
+src/
+public/
+index.html
+
+# Configuration files
+vite.config.ts
+vite.lib.config.ts
+tsconfig*.json
+eslint.config.js
+
+# Documentation (keep README.md)
+*.md
+!README.md
+
+# Git files
+.git/
+.gitignore
+.github/
+
+# Build artifacts (only include dist/)
+*.log
+.DS_Store
+coverage/
+.env*
+
+# Storybook
+.storybook/
+storybook-static/
+
+# Development scripts
+.storybook/
+

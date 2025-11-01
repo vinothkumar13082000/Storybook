@@ -1,50 +1,103 @@
-# React + TypeScript + Vite
+# ModenUI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, beautiful React UI component library with dark/light theme support and animated variants. Built with TypeScript and SCSS.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🎨 **40+ Beautiful Components** - Comprehensive set of UI components
+- 🌓 **Dark/Light Theme** - Built-in theme system with automatic system preference detection
+- ✨ **Animated Variants** - Smooth animations for all components
+- 📱 **Responsive** - Mobile-first design
+- 🎯 **TypeScript** - Full TypeScript support
+- 🎨 **Customizable** - Full control over styling via props
+- 🔧 **Tree-shakeable** - Import only what you need
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+npm install modenui
+# or
+yarn add modenui
+# or
+pnpm add modenui
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Quick Start
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+```tsx
+import React from 'react';
+import { ThemeProvider, Button, Card } from 'modenui';
+import 'modenui/styles';
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+function App() {
+  return (
+    <ThemeProvider>
+      <Card>
+        <Button variant="primary">Click me</Button>
+      </Card>
+    </ThemeProvider>
+  );
+}
 ```
+
+## Components
+
+- **Form Controls**: Button, Input, Textarea, Select, Checkbox, Radio, Switch, Slider
+- **Data Display**: Table, List, Card, Badge, Avatar, Typography, Image, Empty
+- **Feedback**: Alert, Message, Progress, Spinner, Skeleton, Tooltip, Popover, Dialog, Backdrop
+- **Navigation**: Navbar, Sidebar, Breadcrumb, Pagination, Tabs, Accordion
+- **Layout**: Space, Divider
+- **Other**: Stepper, Timeline, Rating, Chip, Link
+
+## Theme Support
+
+All components support both light and dark themes. The `ThemeProvider` automatically detects system preferences.
+
+```tsx
+import { ThemeProvider, useTheme } from 'modenui';
+
+function App() {
+  return (
+    <ThemeProvider defaultMode="light">
+      <YourApp />
+    </ThemeProvider>
+  );
+}
+
+function ThemeToggle() {
+  const { mode, toggleTheme } = useTheme();
+  
+  return (
+    <button onClick={toggleTheme}>
+      Current theme: {mode}
+    </button>
+  );
+}
+```
+
+## Animated Variants
+
+All components support an `animated` prop for smooth entrance animations:
+
+```tsx
+<Button animated>Animated Button</Button>
+<Card animated>Animated Card</Card>
+```
+
+## Documentation
+
+Full documentation and examples are available in our [Storybook](https://your-storybook-url.com).
+
+## Requirements
+
+- React 18.0.0 or higher
+- React DOM 18.0.0 or higher
+- React Icons 5.0.0 or higher (for icons)
+
+## License
+
+MIT
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.

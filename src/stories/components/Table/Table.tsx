@@ -50,6 +50,8 @@ export interface TableProps {
   size?: 'small' | 'medium' | 'large';
   /** Compact mode */
   compact?: boolean;
+  /** Animated variant */
+  animated?: boolean;
   /** Custom className */
   className?: string;
   /** Custom styles */

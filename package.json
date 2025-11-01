@@ -1,15 +1,64 @@
 {
-  "name": "mystorybook",
-  "private": true,
-  "version": "0.0.0",
+  "name": "modenui",
+  "version": "1.0.0",
+  "description": "A modern, beautiful React UI component library with dark/light theme support and animated variants",
   "type": "module",
+  "main": "./dist/moden-ui.cjs",
+  "module": "./dist/moden-ui.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/moden-ui.mjs",
+      "require": "./dist/moden-ui.cjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./styles": "./dist/styles.css",
+    "./styles/*": "./dist/styles/*"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "react",
+    "ui",
+    "components",
+    "design-system",
+    "typescript",
+    "modern",
+    "theme",
+    "dark-mode",
+    "animated",
+    "tailwind",
+    "mui",
+    "ant-design"
+  ],
+  "author": "Vinoth Kumar R",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/modenui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/modenui/issues"
+  },
+  "homepage": "https://github.com/your-username/modenui#readme",
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-icons": "^5.0.0"
+  },
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc && vite build --config vite.lib.config.ts",
+    "build:types": "tsc --project tsconfig.lib.json",
+    "build:lib": "npm run build:types && vite build --config vite.lib.config.ts",
     "lint": "eslint .",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "prepublishOnly": "npm run build:lib"
   },
   "dependencies": {
     "react": "^18.3.1",

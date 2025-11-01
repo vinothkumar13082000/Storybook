@@ -32,7 +32,7 @@ export const Space: React.FC<SpaceProps> = ({
 }) => {
   const sizeValue = typeof size === 'number' ? size : size === 'small' ? 8 : size === 'medium' ? 16 : 24;
 
-  const spaceStyle: React.CSSProperties = {
+  const spaceStyle: React.CSSProperties & { '--space-size'?: string } = {
     ...style,
     gap: `${sizeValue}px`,
     '--space-size': `${sizeValue}px`,

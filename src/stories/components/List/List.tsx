@@ -88,7 +88,7 @@ const ListItem: React.FC<ListItemProps> = ({
   );
 };
 
-export const List: React.FC<ListProps> = ({
+export const List: React.FC<ListProps> & { Item: React.FC<ListItemProps> } = ({
   children,
   variant = 'default',
   borderStyle = 'solid',
