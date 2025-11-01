@@ -1,0 +1,150 @@
+@import '../../theme/variables';
+@import '../../theme/theme-mixins';
+@import '../../theme/animations';
+
+.ui-calendar {
+  display: inline-flex;
+  flex-direction: column;
+  background-color: var(--bg-elevated);
+  border-radius: $radius-lg;
+  box-shadow: $shadow-md;
+  padding: $spacing-4;
+  border: 1px solid var(--border-default);
+  font-family: $font-family-sans;
+  max-width: 320px;
+  width: 100%;
+
+  &--animated {
+    animation: fadeInUp 0.4s ease-out;
+  }
+
+  [data-theme='dark'] & {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: $spacing-4;
+  }
+
+  &__nav-button {
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 14px;
+    cursor: pointer;
+    padding: $spacing-2;
+    border-radius: $radius-md;
+    transition: all $transition-base;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+
+    &:hover {
+      background-color: var(--bg-secondary);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+
+  &__month {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    color: var(--text-primary);
+    text-align: center;
+    flex: 1;
+  }
+
+  &__weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: $spacing-1;
+    margin-bottom: $spacing-2;
+  }
+
+  &__weekday {
+    text-align: center;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    color: var(--text-secondary);
+    padding: $spacing-2;
+  }
+
+  &__days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: $spacing-1;
+  }
+
+  &__day-empty {
+    height: 40px;
+  }
+
+  &__day {
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: $font-size-sm;
+    cursor: pointer;
+    padding: $spacing-2;
+    border-radius: $radius-md;
+    transition: all $transition-base;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: $font-family-sans;
+    position: relative;
+
+    &:hover:not(&--disabled):not(&--selected) {
+      background-color: var(--bg-secondary);
+    }
+
+    &--today {
+      font-weight: $font-weight-semibold;
+      color: $primary-600;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 4px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 4px;
+        height: 4px;
+        background-color: $primary-600;
+        border-radius: 50%;
+      }
+    }
+
+    &--selected {
+      background-color: $primary-500;
+      color: white;
+      font-weight: $font-weight-semibold;
+
+      &:hover {
+        background-color: $primary-600;
+      }
+
+      &::after {
+        display: none;
+      }
+    }
+
+    &--disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
+}
+
